@@ -16,7 +16,9 @@
 a { text-decoration:none; } /* a 태그 밑줄 없애기 */
 * {margin:0; padding:0;} /* 상단 여백 없애는 css */
 ul li {list-style-type: none; float:left; } /* li 태그 스타일 빼기 */
-html { overflow-x:hidden; } /* 세로 스크롤 */
+html,body { overflow: auto; }
+
+/*html { overflow-x:hidden; }*/ /* 세로 스크롤 */
 
 .main_body{  }
 
@@ -35,7 +37,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 .Nicon_family::after{ content:"|"; font-weight:100; font-size:13px; opacity: 0.33; margin-left:5px; padding-bottom: 13px;}
 .Nicon_premium::after{ content:""; } /*li 태그시엔 last-child 이용할 것*/
 
-.Ngnb_right { position:absolute; width: 200px; height:30px; float:right; margin-left:250px; margin-top: 13px; }
+.Ngnb_right { position:absolute; width: 200px; height:30px; float:right; margin-left:275px; margin-top: 13px; }
 .Ngnb_right span {color:white;}
 .Ngnb_right>div { position:relative; display: inline-block;  }
 .gnb_txt { width:15px; height:15px; padding:3px; border: 1px solid #4063bf; font-size:13px; background: #486ac3; } /* 로그인 */
@@ -52,7 +54,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 /* lnb end */
 
 /* main */
-.main_wrap {position:absolute; width: 100%; height: 100%; margin-top:100px; overflow: hidden;}
+.main_wrap {position:absolute; width: 100%; height: 900px; margin-top:100px; overflow: hidden;}
 .lnb{position: relative; width: 900px; height: 30px; padding-top: 20px; margin: 0 auto;font-size: small; border-bottom: 1px solid #828691;}
 .lnb_two_depth{}
 .lnb_date{}
@@ -143,19 +145,24 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 	margin-top: 5px;
 }
 .card_box_num{
-	top: 85px;
-    width: 30px;
+	width: 30px;
+    height: 30px;
     font-size: 17px;
     font-weight: 600;
     font-style: normal;
     display: table-cell;
+    vertical-align: top;
+    margin-top: 20px;
+}
+.card_box_num_real{
+	margin-top: 7px;
 }
 .list_content{
 	display: table-cell;
     width: 100%;
     padding-top: 5px;
     padding-right: 16px;
-    padding-left: 26px;
+    padding-left: 11px;
     vertical-align: top;
 }
 .card_box_list li::after{
@@ -228,9 +235,142 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 	display: inline-block;
 }
 .other_news_plus_button{
-	
+	width: 230px;
+    height: 34px;
+    font-weight: 600;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #e4e5e8;
 }
 /* bottom_button_area end */
+
+/* bottom_date_area */
+
+.bottom_date{
+	width: 900px;
+    height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top:15px;
+}
+.bottom_date_two_depth{
+	display: inline-block;
+}
+.bottom_date_list li{
+	font-size: 0.8em;
+    margin-left: 17px;
+    color: #949598;
+}
+.bottom_date_list li:hover{
+	text-decoration:underline;
+	cursor:pointer;
+}
+.bottom_date_list li:first-child{
+	margin-left:0px;
+	color:#4063bf;
+}
+.bottom_date_list li::after{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 1px;
+    background: #949598;
+    margin-top: 8px;
+    margin-left: 6px;
+    content: "";
+}
+.bottom_date_list li:last-child::after{
+	width:0px;
+	height:0px;
+}
+/* bottom_date_area end */
+
+/* bottom_list_n_myscrap area */
+.bottom_list_n_myscrap{
+	width: 100%;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+.bottom_list_n_myscrap_two_depth{
+	width: 900px;
+    height: 28px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 11px;
+    font-size: 12px;
+    font-weight: 900;
+	
+}
+.bottom_list{
+	float: left;
+    width: 100px;
+}
+.bottom_list_img{
+	width: 10px;
+    height: 6px;
+    margin-left: 3px;
+}
+
+.bottom_myscrap{
+	float: right;
+    width: 100px;
+}
+.bottom_list_img_right{
+	width: 6px;
+    height: 10px;
+    margin-left: 3px;
+}
+/* bottom_list_n_myscrap area end */
+
+/* news_rank_footer */
+
+.news_rank_footer{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    background: #f3f4f8;
+}
+.news_rank_footer_two_depth{
+	margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.news_rank_footer_list{
+	width:900px;
+	height:30px;
+	margin-left: 80px;
+	display:inline-table;
+}
+.news_rank_footer_list li{
+	display: inline;
+}
+.news_rank_footer_list li::after{
+	content: "|";
+    font-weight: 100;
+    font-size: 13px;
+    opacity: 0.33;
+    margin-left: 5px;
+    margin-right:5px;
+    padding-bottom: 13px;
+}
+.news_rank_footer_list li:last-child::after{
+	content: "";
+    margin: 0;
+    padding: 0;
+}
+.news_rank_footer_two_depth span:first-of-type{
+	font-size:6px;
+	color:#949598;
+	display: inline-block;
+    margin-bottom: 13px;
+}
+
+/* news_rank_footer end */
+
+
 </style>
 </head>
 <body class="main_body">
@@ -370,7 +510,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 					</a>
 					<ul class="card_box_list">
 						<li>
-							<div class="card_box_num"><span>1</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">1</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -378,7 +518,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>2</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">2</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -386,7 +526,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>3</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">3</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -394,7 +534,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>4</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">4</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -402,58 +542,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>5</span></div>
-							<div class="list_content">
-								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
-								<span class="list_time">1시간전</span>
-							</div>
-							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="real_card_box">
-					<a href="javascript:;" class="real_card_box_head">
-						<span class="card_box_span_img">
-							<img class="card_box_span_img_png" src="../resources/index/img/card_list_newspaper/mbc_newspaper.png" alt="MBC">
-						</span>
-						<strong class="card_box_name">MBC</strong>
-					</a>
-					<ul class="card_box_list">
-						<li>
-							<div class="card_box_num"><span>1</span></div>
-							<div class="list_content">
-								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
-								<span class="list_time">1시간전</span>
-							</div>
-							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
-						</li>
-						<li>
-							<div class="card_box_num"><span>2</span></div>
-							<div class="list_content">
-								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
-								<span class="list_time">1시간전</span>
-							</div>
-							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
-						</li>
-						<li>
-							<div class="card_box_num"><span>3</span></div>
-							<div class="list_content">
-								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
-								<span class="list_time">1시간전</span>
-							</div>
-							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
-						</li>
-						<li>
-							<div class="card_box_num"><span>4</span></div>
-							<div class="list_content">
-								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
-								<span class="list_time">1시간전</span>
-							</div>
-							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
-						</li>
-						<li>
-							<div class="card_box_num"><span>5</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">5</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -472,7 +561,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 					</a>
 					<ul class="card_box_list">
 						<li>
-							<div class="card_box_num"><span>1</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">1</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -480,7 +569,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>2</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">2</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -488,7 +577,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>3</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">3</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -496,7 +585,7 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>4</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">4</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -504,7 +593,58 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
 						</li>
 						<li>
-							<div class="card_box_num"><span>5</span></div>
+							<div class="card_box_num"><div class="card_box_num_real">5</div></div>
+							<div class="list_content">
+								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
+								<span class="list_time">1시간전</span>
+							</div>
+							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="real_card_box">
+					<a href="javascript:;" class="real_card_box_head">
+						<span class="card_box_span_img">
+							<img class="card_box_span_img_png" src="../resources/index/img/card_list_newspaper/mbc_newspaper.png" alt="MBC">
+						</span>
+						<strong class="card_box_name">MBC</strong>
+					</a>
+					<ul class="card_box_list">
+						<li>
+							<div class="card_box_num"><div class="card_box_num_real">1</div></div>
+							<div class="list_content">
+								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
+								<span class="list_time">1시간전</span>
+							</div>
+							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+						</li>
+						<li>
+							<div class="card_box_num"><div class="card_box_num_real">2</div></div>
+							<div class="list_content">
+								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
+								<span class="list_time">1시간전</span>
+							</div>
+							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+						</li>
+						<li>
+							<div class="card_box_num"><div class="card_box_num_real">3</div></div>
+							<div class="list_content">
+								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
+								<span class="list_time">1시간전</span>
+							</div>
+							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+						</li>
+						<li>
+							<div class="card_box_num"><div class="card_box_num_real">4</div></div>
+							<div class="list_content">
+								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
+								<span class="list_time">1시간전</span>
+							</div>
+							<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+						</li>
+						<li>
+							<div class="card_box_num"><div class="card_box_num_real">5</div></div>
 							<div class="list_content">
 								<a href="javascript:;" class="list_title">언니는 119억, 동생은 209억... 틱톡 수입 1·2위 휩쓴 자매 동영상 보니</a>
 								<span class="list_time">1시간전</span>
@@ -520,6 +660,42 @@ html { overflow-x:hidden; } /* 세로 스크롤 */
 	<div class="bottom_button">
 		<div class="bottom_button_two_depth">
 			<a href="javascript:;"><button class="other_news_plus_button">다른 언론사 랭킹 더보기</button></a>
+			<a href="javascript:;"><button class="other_news_plus_button">랭킹 뉴스 집계 기준</button></a>
+		</div>
+	</div>
+	<div class="bottom_date">
+		<div class="bottom_date_two_depth">
+			<ul class="bottom_date_list">
+				<li>01월 18일(화)</li>
+				<li>01월 17일(월)</li>
+				<li>01월 16일(일)</li>
+				<li>01월 15일(토)</li>
+				<li>01월 14일(금)</li>
+			</ul>
+		</div>
+	</div>
+	<div class="bottom_list_n_myscrap">
+		<div class="bottom_list_n_myscrap_two_depth">
+			<div class="bottom_list"><span>언론사 목록</span><img class="bottom_list_img" src="../resources/index/img/bottom_list_area/bottom_list_bottom_arrow.png"></div>
+			<div class="bottom_list"><span>분야별 목록</span><img class="bottom_list_img" src="../resources/index/img/bottom_list_area/bottom_list_bottom_arrow.png"></div>
+			<div class="bottom_myscrap"><span>마이스크랩</span><img class="bottom_list_img_right" src="../resources/index/img/bottom_list_area/bottom_list_right_arrow.png"></div>
+		</div>
+	</div>
+	<div class="news_rank_footer">
+		<div class="news_rank_footer_two_depth">
+			<ul class="news_rank_footer_list">
+				<li>이용약관</li>
+				<li>서비스 안내</li>
+				<li>기사배열 원칙 책임자 : 유봉석</li>
+				<li>청소년 보호 책임자 : 이희만</li>
+				<li style="font-weight:800">개인정보처리방침</li>
+				<li>책임의 한계와 법적고지</li>
+				<li>뉴스 고객센터</li>
+			</ul>
+			<br>
+			<span>본 콘텐츠의 저작권은 제공처 또는 네이버에 있으며 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</span>
+			<br>
+			<span>Copyright &copy; NAVER Corp. All Rights Reserved.</span>
 		</div>
 	</div>
 </div>
