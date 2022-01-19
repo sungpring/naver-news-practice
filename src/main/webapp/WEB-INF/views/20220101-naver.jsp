@@ -287,7 +287,10 @@ html,body { overflow: auto; }
 
 /* bottom_list_n_myscrap area */
 .bottom_list_n_myscrap{
-	width: 100%;
+	height: 40px;
+    width: 100%;
+    top: 700px;
+    position: absolute;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
 }
@@ -325,10 +328,12 @@ html,body { overflow: auto; }
 /* news_rank_footer */
 
 .news_rank_footer{
-    width: 100%;
+   	width: 100%;
     height: 250px;
     display: flex;
+    position: absolute;
     background: #f3f4f8;
+    top: 740px;
 }
 .news_rank_footer_two_depth{
 	margin: 0 auto;
@@ -367,7 +372,14 @@ html,body { overflow: auto; }
 	display: inline-block;
     margin-bottom: 13px;
 }
-
+.news_rank_footer_two_depth span:last-of-type{
+	font-size:6px;
+}
+.bottom_naver_logo_img{
+	width: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
 /* news_rank_footer end */
 
 
@@ -695,7 +707,7 @@ html,body { overflow: auto; }
 			<br>
 			<span>본 콘텐츠의 저작권은 제공처 또는 네이버에 있으며 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</span>
 			<br>
-			<span>Copyright &copy; NAVER Corp. All Rights Reserved.</span>
+			<span><img class="bottom_naver_logo_img" src="../resources/index/img/bottom_list_area/bottom_naver_logo.png">Copyright &copy; <strong>NAVER Corp.</strong> All Rights Reserved.</span>
 		</div>
 	</div>
 </div>
