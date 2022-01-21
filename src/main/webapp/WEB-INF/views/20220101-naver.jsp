@@ -224,6 +224,7 @@ html,body { overflow: auto; }
     margin-right: 10px;
     margin-top: 10px;
     background: #f2f4f9;
+    object-fit: cover;
 }
 /* real_card_area end */
 
@@ -526,7 +527,7 @@ html,body { overflow: auto; }
 						<strong class="card_box_name">${item.get('title')}</strong>
 					</a>
 					<ul class="card_box_list">
-					<c:set var="itemContents" value="${listContents}" />
+					<c:set var="itemContents" value="${item.get('contents')}" />
 						<c:forEach var="contents" items="${itemContents}" begin="0" end="4" step="1" varStatus="statusContents">
 							
 							<li>
@@ -535,7 +536,7 @@ html,body { overflow: auto; }
 									<a href="javascript:;" class="list_title">${contents.get('title')}</a>
 									<span class="list_time"><c:if test="${contents.get('publishedDate') <= 0 }">방금 전</c:if><c:if test="${contents.get('publishedDate') > 0 }">${contents.get('publishedDate') } 시간전</c:if></span> 
 								</div>
-								<a href="javascript:;" class="list_img"><img class="list_img_png" src="../resources/index/img/card_list_area/mbc_inside_card_img_1.jpg"> </a>
+								<a href="javascript:;" class="list_img"><img class="list_img_png" src="${contents.get('imgUrl')}"> </a>
 							</li>
 							
 						</c:forEach>

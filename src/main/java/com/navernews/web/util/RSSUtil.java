@@ -11,12 +11,19 @@ import java.util.List;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
-import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
+
+//import com.rometools.modules.mediarss.MediaEntryModule;
+//import com.rometools.rome.feed.synd.SyndFeed
+//import com.rometools.rome.feed.synd.SyndEntry
+//import com.rometools.rome.feed.synd.SyndContent
+//import com.rometools.modules.mediarss.MediaEntryModule
+//import com.rometools.rome.feed.module.Module
+//import com.rometools.modules.mediarss.types.Thumbnail
 
 public class RSSUtil {
 
@@ -25,8 +32,7 @@ public class RSSUtil {
 		
 		JSONObject jo = new JSONObject();
 		
-		List<String> tagList = new ArrayList<>();
-		ArrayList<String> newsCompanyArr = new ArrayList<>(Arrays.asList("SBS","연합뉴스"));
+		ArrayList<String> newsCompanyArr = new ArrayList<>(Arrays.asList("SBS","SBS","조선일보"));
 		
 		SyndFeedInput input = new SyndFeedInput();
 		URL feedSource = new URL(uri);
@@ -42,6 +48,7 @@ public class RSSUtil {
 					e.printStackTrace();
 				}
 		});
+		
         jo.put("img", syndFeed.getImage().getUrl().toString());
         
         SyndEntry entry = null;
@@ -51,8 +58,10 @@ public class RSSUtil {
         for(int i = 0; i < 5; i++) {
             
         	entry = entries.get(i);
-            System.out.println(entry.getEnclosures().get(0));
+            //System.out.println(entry.getEnclosures().iterator().next());
         	JSONObject contents = new JSONObject();
+        	
+        	//System.out.println("entry==>"+entry);
         	
         	contents.put("number", i+"");
         	contents.put("author", entry.getAuthor().toString());
@@ -61,7 +70,13 @@ public class RSSUtil {
             contents.put("uri", entry.getUri().toString());
             //System.out.println("getCategories==>"+entry.getCategories());
             //System.out.println("getClass==>"+entry.getClass());
-			
+            
+            //SyndEnclosure syndEnclosure = (SyndEnclosure) entry.getEnclosures().iterator().next();
+            //contents.put("imgUrl", syndEnclosure.getUrl().toString());
+            //MediaEntryModule
+            //System.out.println(entry.getForeignMarkup().get(0));
+            
+            
 			//System.out.println("getContents==>"+((SyndContent)entry.getContents().get(0)).getValue());
             contents.put("description", entry.getDescription().getValue().toString());
             Date updatedAt = entry.getUpdatedDate();
