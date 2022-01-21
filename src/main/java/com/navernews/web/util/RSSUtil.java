@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
+import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -50,7 +51,7 @@ public class RSSUtil {
         for(int i = 0; i < 5; i++) {
             
         	entry = entries.get(i);
-            
+            System.out.println(entry.getEnclosures().get(0));
         	JSONObject contents = new JSONObject();
         	
         	contents.put("number", i+"");
