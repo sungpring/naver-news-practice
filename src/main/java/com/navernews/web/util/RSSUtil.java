@@ -7,10 +7,14 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.http.MediaTypeFactory;
 
+import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -60,9 +64,7 @@ public class RSSUtil {
         	entry = entries.get(i);
             //System.out.println(entry.getEnclosures().iterator().next());
         	JSONObject contents = new JSONObject();
-        	
-        	//System.out.println("entry==>"+entry);
-        	
+
         	contents.put("number", i+"");
         	contents.put("author", entry.getAuthor().toString());
             //System.out.println("getLink==>"+entry.getLink());
@@ -75,7 +77,13 @@ public class RSSUtil {
             //contents.put("imgUrl", syndEnclosure.getUrl().toString());
             //MediaEntryModule
             //System.out.println(entry.getForeignMarkup().get(0));
-            
+            //System.out.println("entry==>"+((SyndContent) entry.getContents()).getValue().toString());
+            Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+            System.out.println(((SyndContent) entry.getContents()).getValue());
+//            Matcher matcher = pattern.matcher();
+//            while(matcher.find()){
+//                System.out.println(matcher.group(1));
+//            }
             
 			//System.out.println("getContents==>"+((SyndContent)entry.getContents().get(0)).getValue());
             contents.put("description", entry.getDescription().getValue().toString());
