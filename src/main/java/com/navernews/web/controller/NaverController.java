@@ -26,13 +26,13 @@ public class NaverController {
 		
 		List<String> uriList = new ArrayList<>();
 		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
-		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
+		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //동아일보
 		uriList.add("https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml"); //조선일보
 		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
-		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
+		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //동아일보
 		uriList.add("https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml"); //조선일보
 		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
-		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //SBS
+		uriList.add("https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER"); //동아일보
 		uriList.add("https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml"); //조선일보
 		
 		/* card */

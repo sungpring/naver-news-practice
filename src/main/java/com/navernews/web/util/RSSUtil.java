@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jdom.Element;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.MediaTypeFactory;
@@ -48,6 +49,7 @@ public class RSSUtil {
 			if(syndFeed.getTitle().toString().contains(company))
 				try {
 					jo.put("title", company);
+					String aBc= company;
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -75,17 +77,37 @@ public class RSSUtil {
             
             //SyndEnclosure syndEnclosure = (SyndEnclosure) entry.getEnclosures().iterator().next();
             //contents.put("imgUrl", syndEnclosure.getUrl().toString());
-            //MediaEntryModule
+            
             //System.out.println(entry.getForeignMarkup().get(0));
             //System.out.println("entry==>"+((SyndContent) entry.getContents()).getValue().toString());
-            Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
-            System.out.println(((SyndContent) entry.getContents()).getValue());
-//            Matcher matcher = pattern.matcher();
-//            while(matcher.find()){
-//                System.out.println(matcher.group(1));
-//            }
             
-			//System.out.println("getContents==>"+((SyndContent)entry.getContents().get(0)).getValue());
+            //System.out.println("123"+((SyndContent) entry.getContents().iterator().next()).getValue());
+            
+           
+//            
+//            for (Element obj : (ArrayList<Element>) entry.getForeignMarkup()) {
+//            	if(obj.getName() == "content") {
+//            		//contents.put("imgUrl", obj.getNamespaceURI());
+//            	}
+//            	System.out.println(obj.getAttributeValue("url"));
+//            }
+//          
+            
+            String contentsStr = ((SyndContent) entry.getContents().iterator().next()).getValue();
+            Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img 태그 src 추출 정규표현식
+            Matcher matcher = pattern.matcher(contentsStr);
+            int count = 0;
+            while(matcher.find()){
+            	String imgStrWithJpg = matcher.group(1);
+            	if(imgStrWithJpg.contains(".jpg")||imgStrWithJpg.contains(".png")||imgStrWithJpg.contains(".PNG")||imgStrWithJpg.contains(".JPG")) {
+            		contents.put("imgUrl", imgStrWithJpg);
+            		count++;
+            	}
+            	if(count == 1) {
+            		break;
+            	}
+            }
+           
             contents.put("description", entry.getDescription().getValue().toString());
             Date updatedAt = entry.getUpdatedDate();
             if(updatedAt == null) updatedAt = entry.getPublishedDate();
