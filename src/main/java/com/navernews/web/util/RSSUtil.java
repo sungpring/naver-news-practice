@@ -37,7 +37,7 @@ public class RSSUtil {
 		
 		JSONObject jo = new JSONObject();
 		
-		ArrayList<String> newsCompanyArr = new ArrayList<>(Arrays.asList("SBS","SBS","조선일보"));
+		ArrayList<String> newsCompanyArr = new ArrayList<>(Arrays.asList("SBS","조선일보","SBS"));
 		
 		SyndFeedInput input = new SyndFeedInput();
 		URL feedSource = new URL(uri);
@@ -49,7 +49,6 @@ public class RSSUtil {
 			if(syndFeed.getTitle().toString().contains(company))
 				try {
 					jo.put("title", company);
-					String aBc= company;
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

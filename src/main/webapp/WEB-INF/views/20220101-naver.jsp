@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -132,6 +133,7 @@ html,body { overflow: auto; }
     height: 25px; 
     border-radius: 70%;
     overflow: hidden;
+    object-fit: contain;
 }
 .card_box_name{
 	display: inline-block;
@@ -498,7 +500,8 @@ html,body { overflow: auto; }
 	<div class="lnb">
 		<div class="lnb_two_depth">
 			<span class="lnb_date">
-				<strong>01</strong>.<strong>14</strong><span class="day">(금)</span>
+			<c:set var="day" value="${fn:split(dayList[0],' ')}" />
+				<strong><c:set var="strZero" value="${fn:replace(day[0], '월', '')}" />${strZero}</strong>.<strong><c:set var="strOne" value="${fn:replace(day[1], '일', '')}" />${strOne}</strong><span class="day">${day[2]}</span>
 			</span>
 			<ul class="lnb_side">
 				<li><a href="javascript:;" class="lnb_side_li" title="전체 언론사">전체 언론사</a></li>
@@ -556,11 +559,9 @@ html,body { overflow: auto; }
 	<div class="bottom_date">
 		<div class="bottom_date_two_depth">
 			<ul class="bottom_date_list">
-				<li>01월 18일(화)</li>
-				<li>01월 17일(월)</li>
-				<li>01월 16일(일)</li>
-				<li>01월 15일(토)</li>
-				<li>01월 14일(금)</li>
+				<c:forEach var="item" items="${dayList}" begin="0" end="4" step="1">
+					<li>${item}</li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -590,7 +591,6 @@ html,body { overflow: auto; }
 	</div>
 </div>
 <script type="text/javascript">
-
 
 </script>
 </body>
