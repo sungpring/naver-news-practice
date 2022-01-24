@@ -99,6 +99,7 @@ public class RSSUtil {
             while(matcher.find()){
             	String imgStrWithJpg = matcher.group(1);
             	if(imgStrWithJpg.contains(".jpg")||imgStrWithJpg.contains(".png")||imgStrWithJpg.contains(".PNG")||imgStrWithJpg.contains(".JPG")) {
+            		System.out.println("imgStrWithJpg==>"+imgStrWithJpg);
             		contents.put("imgUrl", imgStrWithJpg);
             		count++;
             	}
