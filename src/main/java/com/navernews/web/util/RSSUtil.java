@@ -45,16 +45,14 @@ public class RSSUtil {
         
 		List<SyndEntry> entries = syndFeed.getEntries();
         
-		newsCompanyArr.forEach(company -> {
-			if(syndFeed.getTitle().toString().contains(company))
-				try {
-					jo.put("title", company);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-		});
 		
-        jo.put("img", syndFeed.getImage().getUrl().toString());
+		for (String company : newsCompanyArr) {
+			if(syndFeed.getTitle().toString().contains(company))
+				jo.put("title", company);
+		}
+		
+		String img = syndFeed.getImage().getUrl().toString();
+        jo.put("img", img);
         
         SyndEntry entry = null;
         
@@ -99,13 +97,15 @@ public class RSSUtil {
             while(matcher.find()){
             	String imgStrWithJpg = matcher.group(1);
             	if(imgStrWithJpg.contains(".jpg")||imgStrWithJpg.contains(".png")||imgStrWithJpg.contains(".PNG")||imgStrWithJpg.contains(".JPG")) {
-            		System.out.println("imgStrWithJpg==>"+imgStrWithJpg);
             		contents.put("imgUrl", imgStrWithJpg);
             		count++;
             	}
             	if(count == 1) {
             		break;
             	}
+            }
+            if(contents.get("imgUrl") == null || contents.get("imgUrl") == "") {
+            	contents.put("imgUrl", img);
             }
            
             contents.put("description", entry.getDescription().getValue().toString());
@@ -125,7 +125,7 @@ public class RSSUtil {
         }
         
         jo.put("contents", contentsList);
-		
+        
 		return jo;
 	}
 }
