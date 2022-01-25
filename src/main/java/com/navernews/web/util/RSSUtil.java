@@ -104,6 +104,7 @@ public class RSSUtil {
             		break;
             	}
             }
+            System.out.println(contents.get("imgUrl"));
             if(contents.get("imgUrl") == null || contents.get("imgUrl") == "") {
             	contents.put("imgUrl", img);
             }
